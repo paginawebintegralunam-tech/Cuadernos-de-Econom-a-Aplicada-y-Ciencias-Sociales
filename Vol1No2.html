@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vol. 1, No. 2 (2024) - Cuadernos de Economía Aplicada y Ciencias Sociales</title>
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Variables y paleta de colores */
+        :root {
+            --primary-dark: #0a1929;
+            --secondary: #2ec4b6;
+            --accent: #3a86ff;
+            --accent-secondary: #ff9e00;
+            --light-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --card-shadow: rgba(0, 0, 0, 0.25);
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --gradient-bg: linear-gradient(135deg, #0a1929 0%, #0d1f35 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: #333;
+            background: var(--gradient-bg);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Encabezado */
+        header {
+            background: linear-gradient(135deg, #0a1929 0%, #0f2a4a 100%);
+            color: white;
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .top-bar {
+            font-size: 0.8rem;
+            text-align: right;
+            color: #b0d7ff;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid rgba(46, 196, 182, 0.2);
+        }
+
+        .top-bar a {
+            color: #b0d7ff;
+            text-decoration: none;
+            margin-left: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .top-bar a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 55px;
+            margin-right: 15px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1rem;
+            line-height: 1.3;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        nav ul li a i {
+            font-size: 0.8rem;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(46, 196, 182, 0.2);
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        nav ul li.active a {
+            background-color: rgba(46, 196, 182, 0.3);
+            color: var(--secondary);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            font-size: 0.8rem;
+            color: #b0d7ff;
+            margin-top: 0.5rem;
+            padding: 5px 0;
+        }
+
+        .breadcrumb a {
+            color: #b0d7ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        /* Layout principal */
+        main {
+            padding: 2.5rem 0 3.5rem;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 2.5fr) minmax(260px, 1fr);
+            gap: 2.5rem;
+            align-items: flex-start;
+        }
+
+        /* Tarjeta principal del volumen */
+        .hero-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px var(--card-shadow);
+            padding: 2rem;
+            border-left: 5px solid var(--accent);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(46, 196, 182, 0.05) 0%, rgba(58, 134, 255, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+            border-left-color: var(--secondary);
+        }
+
+        .hero-card:hover::before {
+            opacity: 1;
+        }
+
+        .hero-title {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f8ff;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title h1::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem;
+            color: #555;
+            margin-top: 0.6rem;
+        }
+
+        .volume-meta {
+            margin-top: 0.6rem;
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        /* Secciones */
+        .section-block {
+            margin-top: 2rem;
+            padding-top: 0.5rem;
+        }
+
+        .section-block h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-block h2 i {
+            color: var(--secondary);
+        }
+
+        /* Artículos individuales */
+        .article {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.8rem;
+            padding: 1.4rem 1.6rem;
+            border-radius: 10px;
+            border: 1px solid #eef5ff;
+            background-color: #ffffff;
+            position: relative;
+            z-index: 1;
+            transition: all 0.35s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .article::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            border-color: var(--secondary);
+            background-color: #f9fcff;
+        }
+
+        .article:hover::before {
+            left: 100%;
+        }
+
+        .article-thumb {
+            width: 180px;
+            height: 240px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f3f4f6;
+        }
+
+        .article-thumb img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+
+        .article:hover .article-thumb {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        .article:hover .article-thumb img {
+            transform: scale(1.05);
+        }
+
+        .article-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-date {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .article-date i {
+            color: var(--secondary);
+        }
+
+        .article-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .article-title a {
+            color: #111827;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .article-title a:hover {
+            color: var(--accent);
+        }
+
+        .article-excerpt {
+            font-size: 0.9rem;
+            color: #4b5563;
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .article-meta {
+            font-size: 0.8rem;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 0.6rem;
+        }
+
+        .article-meta i {
+            color: var(--secondary);
+        }
+
+        .article-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 0.3rem;
+            margin-right: 1rem;
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .article-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .article-link:hover {
+            color: var(--accent-secondary);
+            padding-left: 4px;
+        }
+
+        .article-link:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Páginas (simple, debajo del PDF) */
+        .article-pages {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.4rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .article-pages i {
+            color: var(--accent);
+        }
+
+        .article-note {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 0.8rem;
+            font-style: italic;
+            padding-top: 0.5rem;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+
+        .sidebar-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem 1.6rem;
+            font-size: 0.9rem;
+            color: #444;
+            border-top: 3px solid var(--accent-secondary);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+            transition: height 0.5s ease;
+            z-index: 0;
+        }
+
+        .sidebar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            border-top-color: var(--secondary);
+        }
+
+        .sidebar-card:hover::before {
+            height: 100%;
+        }
+
+        .sidebar-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar-card h3 i {
+            color: var(--accent-secondary);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .sidebar-card:hover h3 {
+            color: var(--accent);
+        }
+
+        .sidebar-card:hover h3 i {
+            transform: scale(1.1);
+            color: var(--secondary);
+        }
+
+        .sidebar p {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar-card:hover p {
+            color: #333;
+        }
+
+        .sidebar-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sidebar-card ul li {
+            margin-bottom: 0.7rem;
+            padding: 0.5rem 0.7rem;
+            border-bottom: 1px dashed #e0e0e0;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sidebar-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-card ul li:hover {
+            background-color: rgba(46, 196, 182, 0.08);
+            transform: translateX(5px);
+            border-bottom-color: var(--secondary);
+        }
+
+        .sidebar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            position: relative;
+        }
+
+        .sidebar a i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            color: var(--accent-secondary);
+            padding-left: 5px;
+        }
+
+        .sidebar a:hover i {
+            transform: translateX(3px);
+        }
+
+        .license-icon {
+            text-align: center;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .license-icon img {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.4s ease;
+            border-radius: 4px;
+        }
+
+        .license-icon:hover {
+            transform: translateY(-3px);
+        }
+
+        .license-icon:hover img {
+            transform: scale(1.05);
+        }
+
+        .sidebar-footer-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.8rem;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .color-accent {
+            color: var(--secondary);
+            transition: color 0.3s ease;
+        }
+
+        .sidebar-card:hover .color-accent {
+            color: var(--accent-secondary);
+        }
+
+        /* Pie de página */
+        footer {
+            background: linear-gradient(135deg, #0a1929 0%, #0f2a4a 100%);
+            border-top: 3px solid var(--secondary);
+            padding: 2rem 0 2.5rem;
+            font-size: 0.85rem;
+            color: #b0d7ff;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        footer:hover {
+            border-top-color: var(--accent-secondary);
+        }
+
+        footer .footer-text {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.7;
+        }
+
+        footer .footer-text p {
+            margin-bottom: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        footer:hover .footer-text p {
+            color: #d1e7ff;
+        }
+
+        footer strong {
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        footer:hover strong {
+            color: var(--secondary);
+        }
+
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        footer a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        footer a:hover::after {
+            width: 100%;
+        }
+
+        .footer-license-icon {
+            text-align: center;
+            margin-top: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-license-icon:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-license-icon img {
+            max-width: 180px;
+            height: auto;
+            transition: transform 0.4s ease;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+        }
+
+        .footer-license-icon:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .article {
+                grid-template-columns: 1fr;
+            }
+
+            .article-thumb {
+                width: 100%;
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+
+            nav ul {
+                margin-top: 5px;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav ul li {
+                margin: 4px 8px 0 0;
+            }
+
+            .hero-title h1 {
+                font-size: 1.3rem;
+            }
+
+            .hero-card, .sidebar-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .hero-card, .article, .sidebar-card {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="container">
+            <div class="top-bar">
+                <a href="https://www.unam.mx/" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-university"></i> UNAM
+                </a>
+                <a href="https://www.cuautitlan.unam.mx/" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-map-marker-alt"></i> Cuautitlán Izcalli
+                </a>
+            </div>
+            <div class="header-content">
+                <div class="logo">
+                    <img src="logo.png" alt="Cuadernos de Economía Aplicada y Ciencias Sociales">
+                    <div class="logo-text">
+                        <span>Cuadernos de</span><br>
+                        Economía Aplicada<br>
+                        <span>y Ciencias Sociales</span>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> INICIO</a></li>
+                        <li><a href="equipo-editorial.html"><i class="fas fa-users"></i> EQUIPO EDITORIAL</a></li>
+                        <li class="active"><a href="publicaciones.html"><i class="fas fa-book"></i> PUBLICACIONES</a></li>
+                        <li><a href="convocatoria.html"><i class="fas fa-bullhorn"></i> CONVOCATORIA</a></li>
+                        <li><a href="contacto.html"><i class="fas fa-envelope"></i> CONTACTO</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html"><i class="fas fa-chevron-right"></i> INICIO</a> /
+                <a href="publicaciones.html">PUBLICACIONES</a> /
+                Vol. 1, No. 2 (2024)
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <div class="container">
+            <div class="main-grid">
+                <!-- Columna principal -->
+                <section class="hero-card">
+                    <div class="hero-title">
+                        <h1>Vol. 1, No. 2 (2024)</h1>
+                        <p class="hero-subtitle">
+                            Cuadernos de Economía Aplicada y Ciencias Sociales.
+                        </p>
+                        <p class="volume-meta">
+                            Publicación semestral • Acceso abierto
+                        </p>
+                    </div>
+
+                    <!-- Sección 1 -->
+                    <div class="section-block">
+                        <h2><i class="fas fa-file-alt"></i> Sección 1. Artículos</h2>
+
+                        <!-- Artículo 1 -->
+                        <article class="article">
+                            <div class="article-thumb">
+                                <img src="Sequia.png" alt="Vol. 1, No. 2 (2024)">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-date">
+                                    <i class="fas fa-calendar-alt"></i> Vol. 1, No. 2 (2024)
+                                </div>
+                                <h3 class="article-title">
+                                    <a href="#">
+                                        La sequía en México: Impactos en la actividad agrícola en el periodo 2000-2023
+                                    </a>
+                                </h3>
+                                <p class="article-excerpt">
+                                    El agua es un recurso vital cuya conservación es crucial para un futuro sostenible. Las actividades agrícolas dependen en gran medida del agua de riego para mantener los cultivos. Sin embargo, la disponibilidad limitada de agua dulce y el aumento de la demanda debido al crecimiento poblacional y cambios en los patrones de consumo plantean desafíos para su gestión adecuada. La sequía y la escasez de agua representan importantes obstáculos para la agricultura y el desarrollo humano (Carrillo et al., 2023).
+                                </p>
+                                <div class="article-meta">
+                                    <i class="fas fa-user-edit"></i> 
+                                    Editor responsable: Pamela Martinez Lomelí; Ma. Fernanda Valladares Farías
+                                </div>
+                                <a href="https://drive.google.com/file/d/17hontSSkunX7E259PC0R6e5ovksO1O-x/view?usp=sharing" class="article-link">
+                                    <i class="fas fa-file-pdf"></i> VER DOCUMENTO COMPLETO
+                                </a>
+                                <div class="article-pages">
+                                    <i class=""></i>1–8
+                                </div>
+                                <p class="article-note">
+                                    Las opiniones expresadas por los autores no necesariamente reflejan la postura del editor de la publicación.
+                                </p>
+                            </div>
+                        </article>
+
+                        <!-- Artículo 2 -->
+                        <article class="article">
+                            <div class="article-thumb">
+                                <img src="MVZ.png" alt="Vol. 1, No. 2 (2024)">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-date">
+                                    <i class="fas fa-calendar-alt"></i> Vol. 1, No. 2 (2024)
+                                </div>
+                                <h3 class="article-title">
+                                    <a href="#">
+                                        La Medicina Veterinaria y Zootecnia y los pilares estratégicos en la economía global
+                                    </a>
+                                </h3>
+                                <p class="article-excerpt">
+                                    La intersección entre la Medicina Veterinaria y Zootecnia (MVZ) y la economía global es un vínculo inextricable que trasciende los límites tradicionales de la salud animal hasta la producción de alimentos, pues proteger y promover la salud animal es crucial. Esto se logra a través de la MVZ mediante la prevención de enfermedades, el control de plagas y la mejora genética para una producción eficiente.
+                                </p>
+                                <div class="article-meta">
+                                    <i class="fas fa-user-edit"></i> 
+                                    Editor responsable: Iván Barbosa Rodríguez
+                                </div>
+                                <a href="https://drive.google.com/file/d/1EoxjkbZ-KVZLn68ak8yqyzXT32ZizR8f/view?usp=sharing" class="article-link">
+                                    <i class="fas fa-file-pdf"></i> VER DOCUMENTO COMPLETO
+                                </a>
+                                <div class="article-pages">
+                                    <i class=""></i>9–16
+                                </div>
+                                <p class="article-note">
+                                    Las opiniones expresadas por los autores no necesariamente reflejan la postura del editor de la publicación.
+                                </p>
+                            </div>
+                        </article>
+
+                        <!-- Artículo 3 -->
+                        <article class="article">
+                            <div class="article-thumb">
+                                <img src="HabilidadesBlandas.png" alt="Vol. 1, No. 2 (2024)">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-date">
+                                    <i class="fas fa-calendar-alt"></i> Vol. 1, No. 2 (2024)
+                                </div>
+                                <h3 class="article-title">
+                                    <a href="#">
+                                        Las habilidades blandas: La moral a la venta, la ética en cuestión
+                                    </a>
+                                </h3>
+                                <p class="article-excerpt">
+                                    A menudo se ha observado que ciertas personas, debido a su "personalidad", han tenido acceso a grandes oportunidades laborales, mientras que las competencias y los valores quedan en un segundo plano. Esta situación ha sido percibida como injusta por algunos, poniendo en cuestión la ética detrás de la valoración de las llamadas habilidades blandas en contextos profesionales.
+                                </p>
+                                <div class="article-meta">
+                                    <i class="fas fa-user-edit"></i> 
+                                    Editor responsable: Luis Fernando Martínez Zapata; Alejandra Jaramillo Vázquez
+                                </div>
+                                <a href="https://drive.google.com/file/d/1b5MIWGNKknEe7O-weovDJ0IuH1M4VrSe/view?usp=sharing" class="article-link">
+                                    <i class="fas fa-file-pdf"></i> VER DOCUMENTO COMPLETO
+                                </a>
+                                <div class="article-pages">
+                                    <i class=""></i>17–24
+                                </div>
+                                <p class="article-note">
+                                    Las opiniones expresadas por los autores no necesariamente reflejan la postura del editor de la publicación.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Sección 2 -->
+                    <div class="section-block">
+                        <h2><i class="fas fa-language"></i> Sección 2. Traducciones</h2>
+
+                        <article class="article">
+                            <div class="article-thumb">
+                                <img src="Kalecki.png" alt="Vol. 1, No. 2 (2024)">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-date">
+                                    <i class="fas fa-calendar-alt"></i> Vol. 1, No. 2 (2024)
+                                </div>
+                                <h3 class="article-title">
+                                    <a href="#">
+                                        Una interpretación de la ecuación de precios de Kalecki
+                                    </a>
+                                </h3>
+                                <p class="article-excerpt">
+                                    El objetivo de esta nota es discutir la versión lineal de la ecuación de precios de Kalecki. En primer lugar, se examina la pertinencia de las restricciones impuestas por Kalecki al valor de los parámetros de la ecuación. Luego, se explicita el significado económico de estos parámetros. Finalmente, a la luz de la discusión anterior, se sugiere una reinterpretación de la ecuación de precios de Kalecki.
+                                </p>
+                                <div class="article-meta">
+                                    <i class="fas fa-user-edit"></i> 
+                                    Editor responsable: Alfonso Henriques Borges Ferreira
+                                </div>
+                                <a href="https://drive.google.com/file/d/1SRjV7IqOVepsOh7-TE3BHU7VYpUWFoQj/view?usp=sharing" class="article-link">
+                                    <i class="fas fa-file-pdf"></i> VER DOCUMENTO COMPLETO
+                                </a>
+                                <div class="article-pages">
+                                    <i class=""></i>25–36
+                                </div>
+                                <p class="article-note">
+                                    Las opiniones expresadas por los autores no necesariamente reflejan la postura del editor de la publicación.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Sección 3 -->
+                    <div class="section-block">
+                        <h2><i class="fas fa-calculator"></i> Sección 3. Ejercicios de Economía Aplicada</h2>
+
+                        <article class="article">
+                            <div class="article-thumb">
+                                <img src="DiferenciaTotal.png" alt="Vol. 1, No. 2 (2024)">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-date">
+                                    <i class="fas fa-calendar-alt"></i> Vol. 1, No. 2 (2024)
+                                </div>
+                                <h3 class="article-title">
+                                    <a href="#">
+                                        Diferencia Total: Aplicado a una función de producción
+                                    </a>
+                                </h3>
+                                <p class="article-excerpt">
+                                    La herramienta de la diferencia total permite analizar cómo pequeños cambios en los insumos de una función de producción se traducen en variaciones en el producto. Este tipo de ejercicios es fundamental en la economía aplicada para comprender la sensibilidad de los resultados ante cambios marginales en los factores productivos.
+                                </p>
+                                <div class="article-meta">
+                                    <i class="fas fa-user-edit"></i> 
+                                    Editor responsable: Calderón Díaz Tonatihu
+                                </div>
+                                <a href="https://drive.google.com/file/d/1aKlNX_3bUMBPgkXMHXgothLOT_XRk68f/view?usp=sharing" class="article-link">
+                                    <i class="fas fa-file-pdf"></i> VER DOCUMENTO COMPLETO
+                                </a>
+                                <div class="article-pages">
+                                    <i class=""></i>37-39
+                                </div>
+                                <p class="article-note">
+                                    Las opiniones expresadas por los autores no necesariamente reflejan la postura del editor de la publicación.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Barra lateral -->
+                <aside class="sidebar">
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-book-open"></i> Sobre la revista</h3>
+                        <p><strong>ISSN</strong> (en proceso)</p>
+                        <p>
+                            <strong class="color-accent">Cuadernos de Economía Aplicada y Ciencias Sociales</strong> es una revista académica de divulgación fundada en 2024
+                            como un proyecto de la <strong>Red de Investigación Científica en Economía Aplicada (RICEA)</strong>.
+                        </p>
+                        <div class="sidebar-footer-text">
+                            Publicación semestral • Acceso abierto
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-users-cog"></i> Equipo Editorial</h3>
+                        <ul>
+                            <li><a href="equipo-editorial.html"><i class="fas fa-chevron-right"></i> Director General</a></li>
+                            <li><a href="equipo-editorial.html"><i class="fas fa-chevron-right"></i> Consejo Editorial</a></li>
+                            <li><a href="equipo-editorial.html"><i class="fas fa-chevron-right"></i> Editor</a></li>
+                            <li><a href="equipo-editorial.html"><i class="fas fa-chevron-right"></i> Diseño</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-balance-scale"></i> Licencia</h3>
+                        <p>
+                            Esta obra está bajo una 
+                            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+                                Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional
+                            </a>.
+                        </p>
+                        <div class="license-icon">
+                            <img src="Iconos de licencia.png" alt="Iconos licencia Creative Commons BY-NC-SA 4.0">
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-text">
+                <p><strong>ISSN</strong> (en proceso)</p>
+                <p><strong>Editor Responsable:</strong> Dr. Faustino Vega Miranda</p>
+                <p>
+                    <strong>Director de la Revista Cuadernos de Economía Aplicada y Ciencias Sociales</strong><br>
+                    Carretera Cuautitlán-Teoloyucan Km. 2.5, San Sebastián Xhala<br>
+                    54714 Cuautitlán Izcalli, Edo. de Méx.
+                </p>
+                <p>
+                    <i class="fas fa-envelope color-accent"></i> Correo electrónico: 
+                    <a href="mailto:fvega@comunidad.unam.mx">fvega@comunidad.unam.mx</a>
+                </p>
+                <p>
+                    <strong>Propietario:</strong> Facultad de Estudios Superiores Cuautitlán, por medio del Programa Interno de Cátedras de Investigación 2024 CI2425
+                </p>
+                <p>
+                    <i class="fas fa-certificate color-accent"></i> Licencia Creative Commons. Esta obra está bajo una 
+                    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+                        Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional
+                    </a>.
+                </p>
+            </div>
+            <div class="footer-license-icon">
+                <img src="Iconos de licencia.png" alt="Licencia Creative Commons BY-NC-SA 4.0">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Resaltar enlace activo en el menú
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage) {
+                    link.parentElement.classList.add('active');
+                }
+            });
+        });
+
+        // Efecto de aparición suave
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.hero-card, .article, .sidebar-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

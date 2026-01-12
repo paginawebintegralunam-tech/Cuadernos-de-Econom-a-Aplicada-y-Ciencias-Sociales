@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuadernos de Economía Aplicada y Ciencias Sociales</title>
+    <style>
+        /* Variables CSS para colores y fuentes */
+        :root {
+            --primary-color: #111827;
+            --secondary-color: #f59e0b;
+            --accent-color: #2563eb;
+            --light-color: #f9fafb;
+            --dark-color: #111827;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: #111827;
+            background-color: #f3f4f6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar {
+            font-size: 0.8rem;
+            text-align: right;
+            color: #6b7280;
+            margin-bottom: 0.3rem;
+        }
+
+        .top-bar a {
+            color: #6b7280;
+            text-decoration: none;
+            margin-left: 0.5rem;
+        }
+
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 12px;
+        }
+
+        .logo-text {
+            font-weight: 600;
+            font-size: 0.9rem;
+            line-height: 1.2;
+            color: var(--dark-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #111827;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 6px 10px;
+            border-radius: 4px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        nav ul li a:hover {
+            background-color: #111827;
+            color: #ffffff;
+        }
+
+        /* Layout principal (similar al original: contenido + barra lateral) */
+        main {
+            padding: 2.5rem 0 3.5rem;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 2.5fr) minmax(260px, 1fr);
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        /* Tarjeta principal / imagen de portada */
+        .hero-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 1.8rem;
+        }
+
+        .hero-title {
+            text-align: center;
+            margin-bottom: 1.3rem;
+        }
+
+        .hero-title h1 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .hero-image {
+            margin: 0 auto 1.5rem;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 4px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Secciones de texto (Nosotros / Norma Editorial) */
+        .section-block {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 1.5rem 1.8rem;
+            margin-top: 1.3rem;
+        }
+
+        .section-block h2 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.4rem;
+        }
+
+        .section-block p {
+            font-size: 0.86rem;
+            color: #374151;
+        }
+
+        .section-block ul {
+            list-style: none;
+            font-size: 0.86rem;
+            color: #374151;
+        }
+
+        .section-block ul li {
+            padding: 0.5rem 0.6rem;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.4rem;
+        }
+
+        .section-block ul li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: #10b981;
+            font-weight: bold;
+            margin-top: 0.1rem;
+        }
+
+        /* Barra lateral derecha */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 1.3rem 1.4rem;
+            font-size: 0.86rem;
+            color: #374151;
+        }
+
+        .sidebar-card h3 {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            color: #111827;
+        }
+
+        .sidebar-logo {
+            text-align: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .sidebar-logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .sidebar-cover {
+            text-align: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .sidebar-cover img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .license-icon {
+            text-align: center;
+            margin-top: 0.8rem;
+        }
+
+        .license-icon img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .sidebar p {
+            margin-bottom: 0.4rem;
+        }
+
+        .sidebar a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+
+        .sidebar-footer-text {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.6rem;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid #e5e7eb;
+            padding: 1.5rem 0 2rem;
+            font-size: 0.78rem;
+            color: #4b5563;
+        }
+
+        footer .footer-text {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 1rem;
+            line-height: 1.5;
+        }
+
+        footer a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-license-icon {
+            text-align: center;
+            margin-top: 0.7rem;
+        }
+
+        .footer-license-icon img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+            }
+
+            nav ul {
+                margin-top: 5px;
+                flex-wrap: wrap;
+            }
+
+            nav ul li {
+                margin: 4px 10px 0 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="container">
+            <div class="top-bar">
+                <a href="https://www.unam.mx/" target="_blank" rel="noopener noreferrer">UNAM</a> |
+                <a href="https://www.cuautitlan.unam.mx/" target="_blank" rel="noopener noreferrer">Cuautitlán Izcalli</a>
+            </div>
+            <div class="header-content">
+                <div class="logo">
+                    <!-- LOGO PRINCIPAL -->
+                    <img src="logo.png" alt="Cuadernos de Economía Aplicada y Ciencias Sociales">
+                    <div class="logo-text">
+                        Cuadernos de Economía Aplicada<br>
+                        y Ciencias Sociales
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#Inicio.html">Inicio</a></li>
+                        <li><a href="#Equipo editorial.html">Equipo editorial</a></li>
+                        <li><a href="#Publicaciones">Publicaciones</a></li>
+                        <li><a href="#Convocatoria">Convocatoria</a></li>
+                        <li><a href="#Contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main id="inicio">
+        <div class="container">
+            <div class="main-grid">
+                <!-- Columna principal -->
+                <div>
+                    <div class="hero-card">
+                        <div class="hero-title">
+                            <h1>Cuadernos de Economía Aplicada y Ciencias Sociales</h1>
+                        </div>
+
+                        <!-- IMAGEN PRINCIPAL (screenshot / portada general) -->
+                        <div class="hero-image">
+                            <img src="nosotros.png" alt="Cuadernos de Economía Aplicada y Ciencias Sociales - Aula">
+                        </div>
+
+                        <!-- Nosotros -->
+                        <section id="nosotros" class="section-block">
+                            <h2>Nosotros</h2>
+                            <p>
+                                Se trata de una publicación plural creada para impulsar la investigación entre la 
+                                <strong>Universidad Mexiquense del Bicentenario Unidad Tepotzotlán (UMBT)</strong>, 
+                                la <strong>Facultad de Estudios Superiores Cuautitlán (FESC)</strong> y la 
+                                <strong>Universidad de Barcelona (UB)</strong>. 
+                                <strong>Cuadernos de Economía Aplicada y Ciencias Sociales</strong> recibe textos inéditos 
+                                con el objetivo de difundir las inquietudes de alumnos, docentes e investigadores. 
+                                La revista publica dos números por año y recibe documentos, reseñas y traducciones en todo momento.
+                            </p>
+                        </section>
+
+                        <!-- Norma Editorial -->
+                        <section id="norma-editorial" class="section-block">
+                            <h2>Norma Editorial</h2>
+                            <ul>
+                                <li>
+                                    <span class="check-icon">✔</span>
+                                    <span>Todo documento debe ser inédito y se someterá a revisión por el Comité Editorial.</span>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✔</span>
+                                    <span>La recepción de textos será a través de correo electrónico: <strong>fvega@comunidad.unam.mx</strong>.</span>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✔</span>
+                                    <span>Se aceptan textos en español, inglés, francés y portugués.</span>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✔</span>
+                                    <span>
+                                        En caso de aceptación de alguna contribución, se expedirá una carta de aceptación y el autor(es) 
+                                        ceden de manera voluntaria los derechos patrimoniales del trabajo.
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✔</span>
+                                    <span>
+                                        El texto deberá emplear una fuente Times New Roman número 12, a doble espacio y justificado. 
+                                        Se sugiere emplear el citado tipo APA séptima edición 
+                                        (revisar 
+                                        <a href="https://normas-apa.org/wp-content/uploads/Guia-Normas-APA-7ma-edicion.pdf" target="_blank" rel="noopener noreferrer">
+                                            Guía Normas APA 7ma edición
+                                        </a>).
+                                        La extensión del texto deberá contemplar de 1500 a 1800 palabras, enumerando todas las páginas y 
+                                        colocando en negritas los títulos y subtítulos.
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✔</span>
+                                    <span>Cualquier duda o comentario, extenderla al Director de la revista.</span>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- Barra lateral derecha -->
+                <aside class="sidebar">
+                    <!-- Tarjeta sobre la revista con logo libro -->
+                    <div class="sidebar-card">
+                        <div class="sidebar-logo">
+                            <!-- ICONO TIPO LIBRO/REVISTA -->
+                            <img src="libro.png" alt="Icono revista">
+                        </div>
+                        <h3>Sobre la revista</h3>
+                        <p><strong>ISSN</strong> (en proceso)</p>
+                        <p>
+                            <strong>Cuadernos de Economía Aplicada y Ciencias Sociales</strong> es una revista académica de divulgación fundada en 2024 como un proyecto de la 
+                            <strong>Red de Investigación Científica en Economía Aplicada (RICEA)</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta con portada de la revista -->
+                    <div class="sidebar-card">
+                        <div class="sidebar-cover">
+                            <!-- PORTADA DE LA REVISTA -->
+                            <img src="Revista.png" alt="Portada de la revista académica">
+                        </div>
+                        <p class="sidebar-footer-text">
+                            Revista académica dedicada a la economía aplicada y las ciencias sociales.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta de licencia -->
+                    <div class="sidebar-card">
+                        <h3>Licencia</h3>
+                        <p>
+                            Esta obra está bajo una 
+                            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+                                Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional
+                            </a>.
+                        </p>
+                        <div class="license-icon">
+                            <!-- ICONO DE LA LICENCIA -->
+                            <img src="Iconos de licencia.png" alt="Iconos licencia Creative Commons BY-NC-SA 4.0">
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-text">
+                <p><strong>Editor Responsable:</strong> Dr. Faustino Vega Miranda</p>
+                <p><strong>Director de la Revista Cuadernos de Economía Aplicada y Ciencias Sociales</strong></p>
+                <p>
+                    Carretera Cuautitlán-Teoloyucan Km. 2.5, San Sebastián Xhala, 54714 Cuautitlán Izcalli, Edo. de Méx.<br>
+                    Correo electrónico: <a href="mailto:fvega@comunidad.unam.mx">fvega@comunidad.unam.mx</a>
+                </p>
+                <p>
+                    Propietario: Facultad de Estudios Superiores Cuautitlán, por medio del Programa Interno de Cátedras de Investigación 2024 CI2425
+                </p>
+                <p>
+                    Esta obra está bajo una 
+                    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+                        Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional
+                    </a>.
+                </p>
+            </div>
+            <div class="footer-license-icon">
+                <img src="Iconos de licencia.png" alt="Licencia Creative Commons BY-NC-SA 4.0">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll suave en los enlaces del menú
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

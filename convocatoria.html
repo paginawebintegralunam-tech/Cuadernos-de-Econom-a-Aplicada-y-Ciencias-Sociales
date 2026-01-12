@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convocatoria - Cuadernos de Economía Aplicada y Ciencias Sociales</title>
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        
+        :root {
+            --primary-dark: #0a1929; /* Negro azulado oscuro */
+            --secondary: #2ec4b6;    /* Aguamarina principal */
+            --accent: #3a86ff;       /* Azul vibrante */
+            --accent-secondary: #ff9e00; /* Naranja para contraste */
+            --light-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --card-shadow: rgba(0, 0, 0, 0.25);
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --gradient-bg: linear-gradient(135deg, #0a1929 0%, #0d1f35 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: #333;
+            background: var(--gradient-bg);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Encabezado */
+        header {
+            background: linear-gradient(135deg, #0a1929 0%, #0f2a4a 100%);
+            color: white;
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .top-bar {
+            font-size: 0.8rem;
+            text-align: right;
+            color: #b0d7ff;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid rgba(46, 196, 182, 0.2);
+        }
+
+        .top-bar a {
+            color: #b0d7ff;
+            text-decoration: none;
+            margin-left: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .top-bar a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 55px;
+            margin-right: 15px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1rem;
+            line-height: 1.3;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        nav ul li a i {
+            font-size: 0.8rem;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(46, 196, 182, 0.2);
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        nav ul li.active a {
+            background-color: rgba(46, 196, 182, 0.3);
+            color: var(--secondary);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            font-size: 0.8rem;
+            color: #b0d7ff;
+            margin-top: 0.5rem;
+            padding: 5px 0;
+        }
+
+        .breadcrumb a {
+            color: #b0d7ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        /* Layout principal */
+        main {
+            padding: 2.5rem 0 3.5rem;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 2.5fr) minmax(260px, 1fr);
+            gap: 2.5rem;
+            align-items: flex-start;
+        }
+
+        /* Tarjeta principal tipo hero-card */
+        .hero-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px var(--card-shadow);
+            padding: 2rem;
+            border-left: 5px solid var(--accent);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(46, 196, 182, 0.05) 0%, rgba(58, 134, 255, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+            border-left-color: var(--secondary);
+        }
+
+        .hero-card:hover::before {
+            opacity: 1;
+        }
+
+        .hero-title {
+            margin-bottom: 1.8rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f8ff;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title h1:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem;
+            color: #555;
+            margin-top: 0.6rem;
+        }
+
+        /* Contenido de la tarjeta */
+        .hero-card h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .hero-card h2 i {
+            color: var(--secondary);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .hero-card:hover h2 {
+            color: var(--accent);
+        }
+
+        .hero-card:hover h2 i {
+            transform: scale(1.1);
+            color: var(--accent-secondary);
+        }
+
+        .hero-card p {
+            font-size: 0.95rem;
+            color: #444;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-card ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-card ul li {
+            font-size: 0.95rem;
+            color: #444;
+            margin-bottom: 0.6rem;
+            line-height: 1.7;
+            transition: all 0.3s ease;
+        }
+
+        .hero-card ul li:hover {
+            color: var(--accent);
+            transform: translateX(3px);
+        }
+
+        .hero-card strong {
+            color: var(--primary-dark);
+            transition: color 0.3s ease;
+        }
+
+        .hero-card:hover strong {
+            color: var(--secondary);
+        }
+
+        .hero-card a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .hero-card a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-secondary);
+            transition: width 0.3s ease;
+        }
+
+        .hero-card a:hover {
+            color: var(--accent-secondary);
+        }
+
+        .hero-card a:hover::after {
+            width: 100%;
+        }
+
+        /* Cajas destacadas */
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border-left: 5px solid var(--accent-secondary);
+            padding: 1.2rem 1.4rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(255, 158, 0, 0.15);
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 158, 0, 0.25);
+        }
+
+        .highlight-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 5px solid var(--accent);
+            padding: 1.2rem 1.4rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(58, 134, 255, 0.15);
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(58, 134, 255, 0.25);
+        }
+
+        .info-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Barra lateral - estilo a sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+
+        .sidebar-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem 1.6rem;
+            font-size: 0.9rem;
+            color: #444;
+            border-top: 3px solid var(--accent-secondary);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+            transition: height 0.5s ease;
+            z-index: 0;
+        }
+
+        .sidebar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            border-top-color: var(--secondary);
+        }
+
+        .sidebar-card:hover::before {
+            height: 100%;
+        }
+
+        .sidebar-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar-card h3 i {
+            color: var(--accent-secondary);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .sidebar-card:hover h3 {
+            color: var(--accent);
+        }
+
+        .sidebar-card:hover h3 i {
+            transform: scale(1.1);
+            color: var(--secondary);
+        }
+
+        .sidebar p {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar-card:hover p {
+            color: #333;
+        }
+
+        .sidebar-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sidebar-card ul li {
+            margin-bottom: 0.7rem;
+            padding: 0.5rem 0.7rem;
+            border-bottom: 1px dashed #e0e0e0;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sidebar-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-card ul li:hover {
+            background-color: rgba(46, 196, 182, 0.08);
+            transform: translateX(5px);
+            border-bottom-color: var(--secondary);
+        }
+
+        .sidebar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            position: relative;
+        }
+
+        .sidebar a i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            color: var(--accent-secondary);
+            padding-left: 5px;
+        }
+
+        .sidebar a:hover i {
+            transform: translateX(3px);
+        }
+
+        .license-icon {
+            text-align: center;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .license-icon img {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.4s ease;
+            border-radius: 4px;
+        }
+
+        .license-icon:hover {
+            transform: translateY(-3px);
+        }
+
+        .license-icon:hover img {
+            transform: scale(1.05);
+        }
+
+        .sidebar-footer-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.8rem;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .color-accent {
+            color: var(--secondary);
+            transition: color 0.3s ease;
+        }
+
+        .sidebar-card:hover .color-accent {
+            color: var(--accent-secondary);
+        }
+
+        /* Pie de página igual al de INICIO */
+        footer {
+            background: linear-gradient(135deg, #0a1929 0%, #0f2a4a 100%);
+            border-top: 3px solid var(--secondary);
+            padding: 2rem 0 2.5rem;
+            font-size: 0.85rem;
+            color: #b0d7ff;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        footer:hover {
+            border-top-color: var(--accent-secondary);
+        }
+
+        footer .footer-text {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.7;
+        }
+
+        footer .footer-text p {
+            margin-bottom: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        footer:hover .footer-text p {
+            color: #d1e7ff;
+        }
+
+        footer strong {
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        footer:hover strong {
+            color: var(--secondary);
+        }
+
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        footer a:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        footer a:hover:after {
+            width: 100%;
+        }
+
+        .footer-license-icon {
+            text-align: center;
+            margin-top: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-license-icon:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-license-icon img {
+            max-width: 180px;
+            height: auto;
+            transition: transform 0.4s ease;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+        }
+
+        .footer-license-icon:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+
+            nav ul {
+                margin-top: 5px;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav ul li {
+                margin: 4px 8px 0 0;
+            }
+
+            .hero-title h1 {
+                font-size: 1.3rem;
+            }
+
+            .hero-card, .sidebar-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animaciones suaves */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .hero-card, .sidebar-card {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="container">
+            <div class="top-bar">
+                <a href="https://www.unam.mx/" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-university"></i> UNAM
+                </a>
+                <a href="https://www.cuautitlan.unam.mx/" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-map-marker-alt"></i> Cuautitlán Izcalli
+                </a>
+            </div>
+            <div class="header-content">
+                <div class="logo">
+                    <img src="logo.png" alt="Cuadernos de Economía Aplicada y Ciencias Sociales">
+                    <div class="logo-text">
+                        <span>Cuadernos de</span><br>
+                        Economía Aplicada<br>
+                        <span>y Ciencias Sociales</span>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> INICIO</a></li>
+                        <li><a href="equipo-editorial.html"><i class="fas fa-users"></i> EQUIPO EDITORIAL</a></li>
+                        <li><a href="publicaciones.html"><i class="fas fa-book"></i> PUBLICACIONES</a></li>
+                        <li class="active"><a href="convocatoria.html"><i class="fas fa-bullhorn"></i> CONVOCATORIA</a></li>
+                        <li><a href="contacto.html"><i class="fas fa-envelope"></i> CONTACTO</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html"><i class="fas fa-chevron-right"></i> INICIO</a> / CONVOCATORIA
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <div class="container">
+            <div class="main-grid">
+                <!-- Columna principal -->
+                <section class="hero-card">
+                    <div class="hero-title">
+                        <h1>Convocatoria para Publicación</h1>
+                        <p class="hero-subtitle">
+                            Invitamos a investigadores, académicos y estudiantes a enviar sus contribuciones.
+                        </p>
+                    </div>
+
+                    <p>
+                        <strong>Cuadernos de Economía Aplicada y Ciencias Sociales</strong> invita a investigadores, 
+                        académicos, docentes y estudiantes de posgrado a enviar sus contribuciones para ser consideradas 
+                        en los próximos números de nuestra revista.
+                    </p>
+
+                    <div class="highlight-box">
+                        <p><strong><i class="fas fa-calendar-check"></i> Convocatoria permanente</strong></p>
+                        <p>
+                            La revista recibe contribuciones de manera continua durante todo el año. 
+                            Los artículos aceptados serán publicados en el siguiente número disponible.
+                        </p>
+                    </div>
+
+                    <h2><i class="fas fa-file-alt"></i> Tipos de contribuciones</h2>
+                    <p>Se aceptan los siguientes tipos de trabajos:</p>
+                    <ul>
+                        <li><strong>Artículos de investigación:</strong> Trabajos originales e inéditos que presenten resultados de investigaciones científicas en el campo de la economía aplicada y ciencias sociales.</li>
+                        <li><strong>Artículos de revisión:</strong> Análisis críticos y sistemáticos de la literatura sobre temas relevantes en economía aplicada.</li>
+                        <li><strong>Notas de investigación:</strong> Comunicaciones breves sobre avances de investigación o hallazgos preliminares.</li>
+                        <li><strong>Reseñas:</strong> Análisis críticos de libros, publicaciones o eventos académicos recientes.</li>
+                        <li><strong>Traducciones:</strong> Traducciones de artículos relevantes previamente publicados en otros idiomas (con los permisos correspondientes).</li>
+                    </ul>
+
+                    <h2><i class="fas fa-clipboard-check"></i> Requisitos de envío</h2>
+                    <ul>
+                        <li>Los trabajos deben ser <strong>inéditos</strong> y no estar en proceso de evaluación en otra publicación.</li>
+                        <li>Extensión: entre <strong>1,500 y 1,800 palabras</strong> para artículos completos.</li>
+                        <li>Formato: <strong>Times New Roman, tamaño 12, doble espacio, texto justificado</strong>.</li>
+                        <li>Sistema de citación: <strong>APA 7ª edición</strong> (consultar <a href="https://normas-apa.org/wp-content/uploads/Guia-Normas-APA-7ma-edicion.pdf" target="_blank" rel="noopener noreferrer">Guía Normas APA 7ma edición</a>).</li>
+                        <li>Idiomas aceptados: <strong>Español, inglés, francés y portugués</strong>.</li>
+                        <li>Todas las páginas deben estar <strong>numeradas</strong>.</li>
+                        <li>Los títulos y subtítulos deben estar en <strong>negritas</strong>.</li>
+                    </ul>
+
+                    <h2><i class="fas fa-search"></i> Proceso de evaluación</h2>
+                    <p>
+                        Todos los trabajos recibidos serán sometidos a un proceso de <strong>revisión por pares</strong> 
+                        (peer review) bajo la modalidad de <strong>doble ciego</strong>. El Comité Editorial evaluará 
+                        inicialmente la pertinencia y calidad del trabajo antes de enviarlo a evaluadores externos.
+                    </p>
+
+                    <div class="info-box">
+                        <p><strong><i class="fas fa-paper-plane"></i> Envío de contribuciones</strong></p>
+                        <p>
+                            Los trabajos deben enviarse por correo electrónico a:<br>
+                            <strong><a href="mailto:fvega@comunidad.unam.mx">fvega@comunidad.unam.mx</a></strong>
+                        </p>
+                        <p>
+                            En el asunto del correo, indicar: <strong>"Envío de artículo - [Título del trabajo]"</strong>
+                        </p>
+                    </div>
+
+                    <h2><i class="fas fa-copyright"></i> Derechos de autor</h2>
+                    <p>
+                        En caso de aceptación, se expedirá una <strong>carta de aceptación</strong> y el/los autor(es) 
+                        cederán de manera voluntaria los <strong>derechos patrimoniales</strong> del trabajo a la revista.
+                    </p>
+                    <p>
+                        Todos los contenidos publicados están bajo una 
+                        <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+                            Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional
+                        </a>.
+                    </p>
+
+                    <h2><i class="fas fa-address-card"></i> Contacto</h2>
+                    <p>
+                        Para cualquier duda o comentario sobre el proceso de envío, puede contactar al 
+                        <strong>Director de la revista</strong>:
+                    </p>
+                    <p>
+                        <strong>Dr. Faustino Vega Miranda</strong><br>
+                        Correo: <a href="mailto:fvega@comunidad.unam.mx">fvega@comunidad.unam.mx</a><br>
+                        Facultad de Estudios Superiores Cuautitlán, UNAM
+                    </p>
+                </section>
+
+                <!-- Barra lateral -->
+                <aside class="sidebar">
+                    <!-- Fechas importantes -->
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-calendar-alt"></i> Fechas importantes</h3>
+                        <p><strong>Recepción de artículos:</strong> Permanente</p>
+                        <p><strong>Publicación:</strong> 2 números por año</p>
+                        <p><strong>Tiempo de evaluación:</strong> 4-8 semanas aproximadamente</p>
+                    </div>
+
+                    <!-- Documentos útiles -->
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-file-download"></i> Documentos útiles</h3>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Plantilla para artículos</a></li>
+                            <li><a href="https://normas-apa.org/wp-content/uploads/Guia-Normas-APA-7ma-edicion.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Guía APA 7ª edición</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Carta de cesión de derechos</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Código de ética</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Sobre la revista -->
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-book-open"></i> Sobre la revista</h3>
+                        <p><strong>ISSN</strong> (en proceso)</p>
+                        <p>
+                            <strong class="color-accent">Cuadernos de Economía Aplicada y Ciencias Sociales</strong> es una revista académica de divulgación fundada en 2024
+                            como un proyecto de la <strong>Red de Investigación Científica en Economía Aplicada (RICEA)</strong>.
+                        </p>
+                        <div class="sidebar-footer-text">
+                            Publicación semestral • Acceso abierto
+                        </div>
+                    </div>
+
+                    <!-- Licencia -->
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-balance-scale"></i> Licencia</h3>
+                        <p>
+                            Esta obra está bajo una 
+                            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+                                Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional
+                            </a>.
+                        </p>
+                        <div class="license-icon">
+                            <img src="Iconos de licencia.png" alt="Iconos licencia Creative Commons BY-NC-SA 4.0">
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-text">
+                <p><strong>ISSN</strong> (en proceso)</p>
+                <p><strong>Editor Responsable:</strong> Dr. Faustino Vega Miranda</p>
+                <p>
+                    <strong>Director de la Revista Cuadernos de Economía Aplicada y Ciencias Sociales</strong><br>
+                    Carretera Cuautitlán-Teoloyucan Km. 2.5, San Sebastián Xhala<br>
+                    54714 Cuautitlán Izcalli, Edo. de Méx.
+                </p>
+                <p>
+                    <i class="fas fa-envelope color-accent"></i> Correo electrónico: 
+                    <a href="mailto:fvega@comunidad.unam.mx">fvega@comunidad.unam.mx</a>
+                </p>
+                <p>
+                    <strong>Propietario:</strong> Facultad de Estudios Superiores Cuautitlán, por medio del Programa Interno de Cátedras de Investigación 2024 CI2425
+                </p>
+                <p>
+                    <i class="fas fa-certificate color-accent"></i> Licencia Creative Commons. Esta obra está bajo una 
+                    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+                        Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional
+                    </a>.
+                </p>
+            </div>
+            <div class="footer-license-icon">
+                <img src="Iconos de licencia.png" alt="Licencia Creative Commons BY-NC-SA 4.0">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Resaltar enlace activo en el menú
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage) {
+                    link.parentElement.classList.add('active');
+                }
+            });
+        });
+
+        // Efecto de aparición suave
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.sidebar-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        const heroCard = document.querySelector('.hero-card');
+        if (heroCard) {
+            heroCard.style.opacity = '0';
+            heroCard.style.transform = 'translateY(20px)';
+            heroCard.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+
+            const heroObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            heroObserver.observe(heroCard);
+        }
+    </script>
+</body>
+</html>

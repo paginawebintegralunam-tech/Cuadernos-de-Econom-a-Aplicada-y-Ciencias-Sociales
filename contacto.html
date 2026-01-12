@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Cuadernos de Economía Aplicada y Ciencias Sociales</title>
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Variables y paleta de colores */
+        :root {
+            --primary-dark: #0a1929; /* Negro azulado oscuro */
+            --secondary: #2ec4b6;    /* Aguamarina principal */
+            --accent: #3a86ff;       /* Azul vibrante */
+            --accent-secondary: #ff9e00; /* Naranja para contraste */
+            --success: #16a34a;      /* Verde para botón de envío */
+            --light-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --card-shadow: rgba(0, 0, 0, 0.25);
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --gradient-bg: linear-gradient(135deg, #0a1929 0%, #0d1f35 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: #333;
+            background: var(--gradient-bg);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Encabezado igual al de INICIO */
+        header {
+            background: linear-gradient(135deg, #0a1929 0%, #0f2a4a 100%);
+            color: white;
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .top-bar {
+            font-size: 0.8rem;
+            text-align: right;
+            color: #b0d7ff;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid rgba(46, 196, 182, 0.2);
+        }
+
+        .top-bar a {
+            color: #b0d7ff;
+            text-decoration: none;
+            margin-left: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .top-bar a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 55px;
+            margin-right: 15px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1rem;
+            line-height: 1.3;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        nav ul li a i {
+            font-size: 0.8rem;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(46, 196, 182, 0.2);
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        nav ul li.active a {
+            background-color: rgba(46, 196, 182, 0.3);
+            color: var(--secondary);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            font-size: 0.8rem;
+            color: #b0d7ff;
+            margin-top: 0.5rem;
+            padding: 5px 0;
+        }
+
+        .breadcrumb a {
+            color: #b0d7ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        /* Layout principal */
+        main {
+            padding: 2.5rem 0 3.5rem;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 2.2fr) minmax(260px, 1fr);
+            gap: 2.5rem;
+            align-items: flex-start;
+        }
+
+        /* Tarjeta principal del formulario */
+        .hero-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px var(--card-shadow);
+            padding: 2rem 2.5rem;
+            border-left: 5px solid var(--accent);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(46, 196, 182, 0.05) 0%, rgba(58, 134, 255, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+            border-left-color: var(--secondary);
+        }
+
+        .hero-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Encabezado del formulario */
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-header-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .form-header-title i {
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        .form-header-line {
+            width: 180px;
+            height: 3px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            margin: 0 auto 1.5rem;
+            border-radius: 2px;
+        }
+
+        .form-logo {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-logo img {
+            max-height: 70px;
+            width: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            transition: transform 0.3s ease;
+        }
+
+        .form-logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-card h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.8rem;
+            text-align: center;
+            color: var(--primary-dark);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .hero-card h1:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-secondary);
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Formulario */
+        form {
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-group {
+            display: grid;
+            grid-template-columns: 120px minmax(0, 1fr);
+            gap: 0.5rem 1rem;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            font-weight: 700;
+            text-align: right;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 6px;
+            transition: color 0.3s ease;
+        }
+
+        .form-group label i {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-group:hover label {
+            color: var(--accent);
+        }
+
+        .form-group:hover label i {
+            color: var(--accent-secondary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border-radius: 6px;
+            border: 2px solid #d1d5db;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background-color: #f9fafb;
+        }
+
+        .form-group textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.15);
+            background-color: white;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--success) 0%, #15803d 100%);
+            color: white;
+            border: none;
+            padding: 0.7rem 2.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-submit i {
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #15803d 0%, #166534 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(22, 163, 74, 0.4);
+        }
+
+        .btn-submit:hover i {
+            transform: translateX(3px);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .form-note {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 1rem;
+            text-align: center;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .form-note i {
+            color: var(--accent);
+        }
+
+        .form-status {
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            display: none;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .form-status.ok {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 2px solid #10b981;
+            display: block;
+        }
+
+        .form-status.error {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 2px solid #ef4444;
+            display: block;
+        }
+
+        /* Barra lateral */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+
+        .sidebar-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem 1.6rem;
+            font-size: 0.9rem;
+            color: #444;
+            border-top: 3px solid var(--accent-secondary);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+            transition: height 0.5s ease;
+            z-index: 0;
+        }
+
+        .sidebar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            border-top-color: var(--secondary);
+        }
+
+        .sidebar-card:hover::before {
+            height: 100%;
+        }
+
+        .sidebar-card img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sidebar-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .sidebar-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar-card h3 i {
+            color: var(--accent-secondary);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .sidebar-card:hover h3 {
+            color: var(--accent);
+        }
+
+        .sidebar-card:hover h3 i {
+            transform: scale(1.1);
+            color: var(--secondary);
+        }
+
+        .sidebar p {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar-card:hover p {
+            color: #333;
+        }
+
+        .sidebar a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .sidebar a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-secondary);
+            transition: width 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            color: var(--accent-secondary);
+        }
+
+        .sidebar a:hover::after {
+            width: 100%;
+        }
+
+        .license-icon {
+            text-align: center;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .license-icon img {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.4s ease;
+            border-radius: 4px;
+        }
+
+        .license-icon:hover {
+            transform: translateY(-3px);
+        }
+
+        .license-icon:hover img {
+            transform: scale(1.05);
+        }
+
+        .color-accent {
+            color: var(--secondary);
+            transition: color 0.3s ease;
+        }
+
+        .sidebar-card:hover .color-accent {
+            color: var(--accent-secondary);
+        }
+
+        /* Pie de página */
+        footer {
+            background: linear-gradient(135deg, #0a1929 0%, #0f2a4a 100%);
+            border-top: 3px solid var(--secondary);
+            padding: 2rem 0 2.5rem;
+            font-size: 0.85rem;
+            color: #b0d7ff;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        footer:hover {
+            border-top-color: var(--accent-secondary);
+        }
+
+        footer .footer-text {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.7;
+        }
+
+        footer .footer-text p {
+            margin-bottom: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        footer:hover .footer-text p {
+            color: #d1e7ff;
+        }
+
+        footer strong {
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        footer:hover strong {
+            color: var(--secondary);
+        }
+
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        footer a:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        footer a:hover:after {
+            width: 100%;
+        }
+
+        .footer-license-icon {
+            text-align: center;
+            margin-top: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-license-icon:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-license-icon img {
+            max-width: 180px;
+            height: auto;
+            transition: transform 0.4s ease;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+        }
+
+        .footer-license-icon:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group label {
+                text-align: left;
+                justify-content: flex-start;
+            }
+
+            .form-actions {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+
+            nav ul {
+                margin-top: 5px;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav ul li {
+                margin: 4px 8px 0 0;
+            }
+
+            .hero-card {
+                padding: 1.5rem;
+            }
+
+            .hero-card h1 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Animaciones suaves */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .hero-card, .sidebar-card {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="container">
+            <div class="top-bar">
+                <a href="https://www.unam.mx/" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-university"></i> UNAM
+                </a>
+                <a href="https://www.cuautitlan.unam.mx/" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-map-marker-alt"></i> Cuautitlán Izcalli
+                </a>
+            </div>
+            <div class="header-content">
+                <div class="logo">
+                    <img src="logo.png" alt="Cuadernos de Economía Aplicada y Ciencias Sociales">
+                    <div class="logo-text">
+                        <span>Cuadernos de</span><br>
+                        Economía Aplicada<br>
+                        <span>y Ciencias Sociales</span>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> INICIO</a></li>
+                        <li><a href="equipo-editorial.html"><i class="fas fa-users"></i> EQUIPO EDITORIAL</a></li>
+                        <li><a href="publicaciones.html"><i class="fas fa-book"></i> PUBLICACIONES</a></li>
+                        <li><a href="convocatoria.html"><i class="fas fa-bullhorn"></i> CONVOCATORIA</a></li>
+                        <li class="active"><a href="contacto.html"><i class="fas fa-envelope"></i> CONTACTO</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html"><i class="fas fa-chevron-right"></i> INICIO</a> / CONTACTO
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <div class="container">
+            <div class="main-grid">
+                <!-- Formulario -->
+                <section class="hero-card">
+                    <div class="form-header">
+                        <div class="form-header-title">
+                            <i class="fas fa-paper-plane"></i>
+                            Formulario de Contacto
+                        </div>
+                        <div class="form-header-line"></div>
+
+                        <div class="form-logo">
+                            <img src="logo.png" alt="Logotipo Cuadernos de Economía Aplicada y Ciencias Sociales">
+                        </div>
+
+                        <h1>Ponte en contacto con nosotros</h1>
+                    </div>
+
+                    <!--
+                        Formspree
+                    -->
+                    <form id="contact-form" action="https://formspree.io/f/xjknnyzy" method="POST">
+                        <div class="form-group">
+                            <label for="nombre">
+                                <i class="fas fa-user"></i>
+                                Nombre
+                            </label>
+                            <input id="nombre" name="nombre" type="text" placeholder="Ingresar Nombre" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">
+                                <i class="fas fa-envelope"></i>
+                                Correo
+                            </label>
+                            <input id="email" name="email" type="email" placeholder="Ingresar Correo" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comentario">
+                                <i class="fas fa-comment-dots"></i>
+                                Comentario
+                            </label>
+                            <textarea id="comentario" name="comentario" placeholder="Escribe tus comentarios" required></textarea>
+                        </div>
+
+                        <!-- Campo opcional para asunto en el correo -->
+                        <input type="hidden" name="_subject" value="Nuevo mensaje desde el sitio web de la revista">
+
+                        <!-- Opcional: idioma de respuesta de Formspree -->
+                        <input type="hidden" name="_language" value="es">
+
+                        <div class="form-actions">
+                            <button class="btn-submit" type="submit">
+                                <i class="fas fa-paper-plane"></i>
+                                Enviar
+                            </button>
+                        </div>
+
+                        <p class="form-note">
+                            <i class="fas fa-info-circle"></i>
+                            Al enviar este formulario, aceptas que la información proporcionada se utilice únicamente para dar seguimiento a tu solicitud.
+                        </p>
+
+                        <p id="form-status" class="form-status"></p>
+                    </form>
+                </section>
+
+                <!-- Barra lateral -->
+                <aside class="sidebar">
+                    <!-- Sobre la revista -->
+                    <div class="sidebar-card">
+                        <img src="Revista.png" alt="Portada de la revista Cuadernos de Economía Aplicada y Ciencias Sociales">
+                        <h3><i class="fas fa-book-open"></i> Sobre la revista</h3>
+                        <p><strong>ISSN</strong> (en proceso)</p>
+                        <p>
+                            Revista Académica de la <strong class="color-accent">Red de Investigación Científica en Economía Aplicada (RICEA)</strong>,
+                            en colaboración con la <strong>FES Cuautitlán</strong> y otras instituciones.
+                        </p>
+                    </div>
+
+                    <!-- Contacto directo -->
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-address-card"></i> Contacto directo</h3>
+                        <p><strong>Director:</strong> Dr. Faustino Vega Miranda</p>
+                        <p>
+                            <i class="fas fa-envelope color-accent"></i> Correo: 
+                            <a href="mailto:fvega@comunidad.unam.mx">fvega@comunidad.unam.mx</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-map-marker-alt color-accent"></i>
+                            Carretera Cuautitlán-Teoloyucan Km. 2.5, San Sebastián Xhala<br>
+                            54714 Cuautitlán Izcalli, Edo. de Méx.
+                        </p>
+                    </div>
+
+                    <!-- Licencia -->
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-balance-scale"></i> Licencia</h3>
+                        <p>
+                            Licencia Creative Commons. Esta obra está bajo una 
+                            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+                                Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional
+                            </a>.
+                        </p>
+                        <div class="license-icon">
+                            <img src="Iconos de licencia.png" alt="Iconos licencia Creative Commons BY-NC-SA 4.0">
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-text">
+                <p><strong>ISSN</strong> (en proceso)</p>
+                <p><strong>Editor Responsable:</strong> Dr. Faustino Vega Miranda</p>
+                <p>
+                    <strong>Director de la Revista Cuadernos de Economía Aplicada y Ciencias Sociales</strong><br>
+                    Carretera Cuautitlán-Teoloyucan Km. 2.5, San Sebastián Xhala<br>
+                    54714 Cuautitlán Izcalli, Edo. de Méx.
+                </p>
+                <p>
+                    <i class="fas fa-envelope color-accent"></i> Correo electrónico: 
+                    <a href="mailto:fvega@comunidad.unam.mx">fvega@comunidad.unam.mx</a>
+                </p>
+                <p>
+                    <strong>Propietario:</strong> Facultad de Estudios Superiores Cuautitlán, por medio del Programa Interno de Cátedras de Investigación 2024 CI2425
+                </p>
+                <p>
+                    <i class="fas fa-certificate color-accent"></i> Licencia Creative Commons. Esta obra está bajo una 
+                    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+                        Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional
+                    </a>.
+                </p>
+            </div>
+            <div class="footer-license-icon">
+                <img src="Iconos de licencia.png" alt="Licencia Creative Commons BY-NC-SA 4.0">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script opcional para mostrar mensaje sin salir de la página -->
+    <script>
+        // Resaltar enlace activo en el menú
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage) {
+                    link.parentElement.classList.add('active');
+                }
+            });
+        });
+
+        // Efecto de aparición suave
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.sidebar-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        const heroCard = document.querySelector('.hero-card');
+        if (heroCard) {
+            heroCard.style.opacity = '0';
+            heroCard.style.transform = 'translateY(20px)';
+            heroCard.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+
+            const heroObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            heroObserver.observe(heroCard);
+        }
+
+        // Manejo del formulario
+        const form = document.getElementById('contact-form');
+        const statusEl = document.getElementById('form-status');
+
+        form.addEventListener('submit', async function (e) {
+            // Quita este bloque si prefieres el comportamiento por defecto de Formspree (redirección).
+            e.preventDefault();
+            statusEl.className = 'form-status';
+            statusEl.textContent = 'Enviando...';
+            statusEl.style.display = 'block';
+
+            const data = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    form.reset();
+                    statusEl.className = 'form-status ok';
+                    statusEl.innerHTML = '<i class="fas fa-check-circle"></i> Mensaje enviado correctamente. ¡Gracias por contactarnos!';
+                } else {
+                    statusEl.className = 'form-status error';
+                    statusEl.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Ocurrió un error al enviar el mensaje. Intenta nuevamente más tarde.';
+                }
+            } catch (err) {
+                statusEl.className = 'form-status error';
+                statusEl.innerHTML = '<i class="fas fa-exclamation-triangle"></i> No se pudo conectar con el servicio de correo. Revisa tu conexión e inténtalo otra vez.';
+            }
+        });
+    </script>
+</body>
+</html>
