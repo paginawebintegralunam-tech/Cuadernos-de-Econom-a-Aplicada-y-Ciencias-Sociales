@@ -793,8 +793,13 @@
                 grid-template-columns: 1fr;
             }
             
+            /* ORDEN MÓVIL: Imagen primero, luego sidebar, luego contenido */
+            .hero-card {
+                order: 2;
+            }
+            
             .sidebar {
-                order: -1;
+                order: 1;
             }
             
             .hero-image-container, .bottom-image-wrapper {
@@ -900,83 +905,81 @@
         <div class="container">
             <div class="main-grid">
                 <!-- Columna principal -->
-                <div>
-                    <div class="hero-card">
-                        <!-- IMAGEN PRINCIPAL -->
-                        <div class="hero-image-container">
-                            <div class="hero-image">
-                                <img src="Revista.png" alt="Cuadernos de Economía Aplicada y Ciencias Sociales - Revista Académica">
-                            </div>
+                <div class="hero-card">
+                    <!-- IMAGEN PRINCIPAL -->
+                    <div class="hero-image-container">
+                        <div class="hero-image">
+                            <img src="Revista.png" alt="Cuadernos de Economía Aplicada y Ciencias Sociales - Revista Académica">
                         </div>
+                    </div>
 
-                        <!-- TÍTULO DEBAJO DE LA IMAGEN CON FORMATO COMPLETO -->
-                        <div class="hero-title">
-                            <h1>Cuadernos de Economía Aplicada y Ciencias Sociales</h1>
-                        </div>
+                    <!-- TÍTULO DEBAJO DE LA IMAGEN CON FORMATO COMPLETO -->
+                    <div class="hero-title">
+                        <h1>Cuadernos de Economía Aplicada y Ciencias Sociales</h1>
+                    </div>
 
-                        <!-- Nosotros -->
-                        <section id="nosotros" class="section-block">
-                            <h2><i class="fas fa-info-circle"></i> Nosotros</h2>
-                            <p>
-                                Se trata de una publicación plural creada para impulsar la investigación entre la 
-                                <strong>Universidad Mexiquense del Bicentenario Unidad Tepotzotlán (UMBT)</strong>, 
-                                la <strong>Facultad de Estudios Superiores Cuautitlán (FESC)</strong> y la 
-                                <strong>Universidad de Barcelona (UB)</strong>. 
-                            </p>
-                            <p>
-                                <strong>Cuadernos de Economía Aplicada y Ciencias Sociales</strong> recibe textos inéditos 
-                                con el objetivo de difundir las inquietudes de alumnos, docentes e investigadores. 
-                                La revista publica dos números por año y recibe documentos, reseñas y traducciones en todo momento.
-                            </p>
-                        </section>
+                    <!-- Nosotros -->
+                    <section id="nosotros" class="section-block">
+                        <h2><i class="fas fa-info-circle"></i> Nosotros</h2>
+                        <p>
+                            Se trata de una publicación plural creada para impulsar la investigación entre la 
+                            <strong>Universidad Mexiquense del Bicentenario Unidad Tepotzotlán (UMBT)</strong>, 
+                            la <strong>Facultad de Estudios Superiores Cuautitlán (FESC)</strong> y la 
+                            <strong>Universidad de Barcelona (UB)</strong>. 
+                        </p>
+                        <p>
+                            <strong>Cuadernos de Economía Aplicada y Ciencias Sociales</strong> recibe textos inéditos 
+                            con el objetivo de difundir las inquietudes de alumnos, docentes e investigadores. 
+                            La revista publica dos números por año y recibe documentos, reseñas y traducciones en todo momento.
+                        </p>
+                    </section>
 
-                        <!-- Norma Editorial -->
-                        <section id="norma-editorial" class="section-block">
-                            <h2><i class="fas fa-edit"></i> Norma Editorial</h2>
-                            <ul>
-                                <li>
-                                    <span class="check-icon">✓</span>
-                                    <span>Todo documento debe ser inédito y se someterá a revisión por el Comité Editorial.</span>
-                                </li>
-                                <li>
-                                    <span class="check-icon">✓</span>
-                                    <span>La recepción de textos será a través de correo electrónico: <strong>fvega@comunidad.unam.mx</strong>.</span>
-                                </li>
-                                <li>
-                                    <span class="check-icon">✓</span>
-                                    <span>Se aceptan textos en español, inglés, francés y portugués.</span>
-                                </li>
-                                <li>
-                                    <span class="check-icon">✓</span>
-                                    <span>
-                                        En caso de aceptación de alguna contribución, se expedirá una carta de aceptación y el autor(es) 
-                                        ceden de manera voluntaria los derechos patrimoniales del trabajo.
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="check-icon">✓</span>
-                                    <span>
-                                        El texto deberá emplear una fuente Times New Roman número 12, a doble espacio y justificado. 
-                                        Se sugiere emplear el citado tipo APA séptima edición 
-                                        (revisar 
-                                        <a href="https://normas-apa.org/wp-content/uploads/Guia-Normas-APA-7ma-edicion.pdf" target="_blank" rel="noopener noreferrer">
-                                            Guía Normas APA 7ma edición
-                                        </a>).
-                                        La extensión del texto deberá contemplar de 1500 a 1800 palabras, enumerando todas las páginas y 
-                                        colocando en negritas los títulos y subtítulos.
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="check-icon">✓</span>
-                                    <span>Cualquier duda o comentario, extenderla al Director de la revista.</span>
-                                </li>
-                            </ul>
-                        </section>
+                    <!-- Norma Editorial -->
+                    <section id="norma-editorial" class="section-block">
+                        <h2><i class="fas fa-edit"></i> Norma Editorial</h2>
+                        <ul>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <span>Todo documento debe ser inédito y se someterá a revisión por el Comité Editorial.</span>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <span>La recepción de textos será a través de correo electrónico: <strong>fvega@comunidad.unam.mx</strong>.</span>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <span>Se aceptan textos en español, inglés, francés y portugués.</span>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <span>
+                                    En caso de aceptación de alguna contribución, se expedirá una carta de aceptación y el autor(es) 
+                                    ceden de manera voluntaria los derechos patrimoniales del trabajo.
+                                </span>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <span>
+                                    El texto deberá emplear una fuente Times New Roman número 12, a doble espacio y justificado. 
+                                    Se sugiere emplear el citado tipo APA séptima edición 
+                                    (revisar 
+                                    <a href="https://normas-apa.org/wp-content/uploads/Guia-Normas-APA-7ma-edicion.pdf" target="_blank" rel="noopener noreferrer">
+                                        Guía Normas APA 7ma edición
+                                    </a>).
+                                    La extensión del texto deberá contemplar de 1500 a 1800 palabras, enumerando todas las páginas y 
+                                    colocando en negritas los títulos y subtítulos.
+                                </span>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <span>Cualquier duda o comentario, extenderla al Director de la revista.</span>
+                            </li>
+                        </ul>
+                    </section>
 
-                        <!-- IMAGEN NOSOTROS.PNG DENTRO DEL CONTENEDOR PRINCIPAL -->
-                        <div class="bottom-image-wrapper">
-                            <img src="nosotros.png" alt="Cuadernos de Economía Aplicada y Ciencias Sociales - Aula">
-                        </div>
+                    <!-- IMAGEN NOSOTROS.PNG DENTRO DEL CONTENEDOR PRINCIPAL -->
+                    <div class="bottom-image-wrapper">
+                        <img src="nosotros.png" alt="Cuadernos de Economía Aplicada y Ciencias Sociales - Aula">
                     </div>
                 </div>
 
