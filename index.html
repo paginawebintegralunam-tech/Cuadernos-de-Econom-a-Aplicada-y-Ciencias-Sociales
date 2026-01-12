@@ -172,42 +172,6 @@
             align-items: flex-start;
         }
 
-        /* NUEVO: tarjeta SOLO para la imagen principal (Revista.png) */
-        .hero-image-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 8px 30px var(--card-shadow);
-            padding: 2rem;
-            border-left: 5px solid var(--accent);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            grid-column: 1;
-        }
-
-        .hero-image-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(46, 196, 182, 0.05) 0%, rgba(58, 134, 255, 0.05) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 0;
-        }
-
-        .hero-image-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
-            border-left-color: var(--secondary);
-        }
-
-        .hero-image-card:hover::before {
-            opacity: 1;
-        }
-
         /* Tarjeta principal - SIN EFECTO 3D, FIJO */
         .hero-card {
             background-color: var(--card-bg);
@@ -218,7 +182,6 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            grid-column: 1;
         }
 
         .hero-card::before {
@@ -536,8 +499,6 @@
             display: flex;
             flex-direction: column;
             gap: 1.8rem;
-            grid-column: 2;
-            grid-row: 1 / span 2;
         }
 
         .sidebar-card {
@@ -831,20 +792,14 @@
             .main-grid {
                 grid-template-columns: 1fr;
             }
-
-            /* IMPORTANTE: en móvil, primero la imagen; el resto se queda en el mismo orden */
-            .hero-image-card { 
+            
+            /* ORDEN MÓVIL: Contenedor completo primero, luego sidebar */
+            .hero-card {
                 order: 1;
-                grid-column: 1;
             }
-            .sidebar { 
+            
+            .sidebar {
                 order: 2;
-                grid-column: 1;
-                grid-row: auto;
-            }
-            .hero-card { 
-                order: 3;
-                grid-column: 1;
             }
             
             .hero-image-container, .bottom-image-wrapper {
@@ -874,7 +829,7 @@
                 font-size: 1.3rem;
             }
             
-            .section-block, .hero-card, .hero-image-card, .sidebar-card {
+            .section-block, .hero-card, .sidebar-card {
                 padding: 1.5rem;
             }
             
@@ -895,7 +850,7 @@
             100% { transform: scale(1); }
         }
 
-        .hero-card, .hero-image-card, .section-block, .sidebar-card {
+        .hero-card, .section-block, .sidebar-card {
             animation: fadeIn 0.5s ease-out;
         }
 
@@ -949,17 +904,86 @@
     <main id="inicio">
         <div class="container">
             <div class="main-grid">
-
-                <!-- (A) PRIMERO: contenedor SOLO con la imagen Revista.png -->
-                <div class="hero-image-card">
+                <!-- Columna principal - TODO EL CONTENEDOR COMPLETO -->
+                <div class="hero-card">
+                    <!-- IMAGEN PRINCIPAL -->
                     <div class="hero-image-container">
                         <div class="hero-image">
                             <img src="Revista.png" alt="Cuadernos de Economía Aplicada y Ciencias Sociales - Revista Académica">
                         </div>
                     </div>
+
+                    <!-- TÍTULO DEBAJO DE LA IMAGEN CON FORMATO COMPLETO -->
+                    <div class="hero-title">
+                        <h1>Cuadernos de Economía Aplicada y Ciencias Sociales</h1>
+                    </div>
+
+                    <!-- Nosotros -->
+                    <section id="nosotros" class="section-block">
+                        <h2><i class="fas fa-info-circle"></i> Nosotros</h2>
+                        <p>
+                            Se trata de una publicación plural creada para impulsar la investigación entre la 
+                            <strong>Universidad Mexiquense del Bicentenario Unidad Tepotzotlán (UMBT)</strong>, 
+                            la <strong>Facultad de Estudios Superiores Cuautitlán (FESC)</strong> y la 
+                            <strong>Universidad de Barcelona (UB)</strong>. 
+                        </p>
+                        <p>
+                            <strong>Cuadernos de Economía Aplicada y Ciencias Sociales</strong> recibe textos inéditos 
+                            con el objetivo de difundir las inquietudes de alumnos, docentes e investigadores. 
+                            La revista publica dos números por año y recibe documentos, reseñas y traducciones en todo momento.
+                        </p>
+                    </section>
+
+                    <!-- Norma Editorial -->
+                    <section id="norma-editorial" class="section-block">
+                        <h2><i class="fas fa-edit"></i> Norma Editorial</h2>
+                        <ul>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <span>Todo documento debe ser inédito y se someterá a revisión por el Comité Editorial.</span>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <span>La recepción de textos será a través de correo electrónico: <strong>fvega@comunidad.unam.mx</strong>.</span>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <span>Se aceptan textos en español, inglés, francés y portugués.</span>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <span>
+                                    En caso de aceptación de alguna contribución, se expedirá una carta de aceptación y el autor(es) 
+                                    ceden de manera voluntaria los derechos patrimoniales del trabajo.
+                                </span>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <span>
+                                    El texto deberá emplear una fuente Times New Roman número 12, a doble espacio y justificado. 
+                                    Se sugiere emplear el citado tipo APA séptima edición 
+                                    (revisar 
+                                    <a href="https://normas-apa.org/wp-content/uploads/Guia-Normas-APA-7ma-edicion.pdf" target="_blank" rel="noopener noreferrer">
+                                        Guía Normas APA 7ma edición
+                                    </a>).
+                                    La extensión del texto deberá contemplar de 1500 a 1800 palabras, enumerando todas las páginas y 
+                                    colocando en negritas los títulos y subtítulos.
+                                </span>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <span>Cualquier duda o comentario, extenderla al Director de la revista.</span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- IMAGEN NOSOTROS.PNG DENTRO DEL CONTENEDOR PRINCIPAL -->
+                    <div class="bottom-image-wrapper">
+                        <img src="nosotros.png" alt="Cuadernos de Economía Aplicada y Ciencias Sociales - Aula">
+                    </div>
                 </div>
 
-                <!-- (B) SEGUNDO: sidebar (se mantiene igual) -->
+                <!-- Barra lateral derecha -->
                 <aside class="sidebar">
                     <!-- Tarjeta sobre la revista -->
                     <div class="sidebar-card">
@@ -989,86 +1013,17 @@
                     <div class="sidebar-card">
                         <h3><i class="fas fa-balance-scale"></i> Licencia</h3>
                         <p>
-                            Esta obra está bajo una
+                            Esta obra está bajo una 
                             <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
                                 Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional
                             </a>.
                         </p>
                         <div class="license-icon">
+                            <!-- ICONO DE LA LICENCIA -->
                             <img src="Iconos de licencia.png" alt="Iconos licencia Creative Commons BY-NC-SA 4.0">
                         </div>
                     </div>
                 </aside>
-
-                <!-- (C) TERCERO: el resto del contenido principal -->
-                <div class="hero-card">
-
-                    <div class="hero-title">
-                        <h1>Cuadernos de Economía Aplicada y Ciencias Sociales</h1>
-                    </div>
-
-                    <section id="nosotros" class="section-block">
-                        <h2><i class="fas fa-info-circle"></i> Nosotros</h2>
-                        <p>
-                            Se trata de una publicación plural creada para impulsar la investigación entre la
-                            <strong>Universidad Mexiquense del Bicentenario Unidad Tepotzotlán (UMBT)</strong>,
-                            la <strong>Facultad de Estudios Superiores Cuautitlán (FESC)</strong> y la
-                            <strong>Universidad de Barcelona (UB)</strong>.
-                        </p>
-                        <p>
-                            <strong>Cuadernos de Economía Aplicada y Ciencias Sociales</strong> recibe textos inéditos
-                            con el objetivo de difundir las inquietudes de alumnos, docentes e investigadores.
-                            La revista publica dos números por año y recibe documentos, reseñas y traducciones en todo momento.
-                        </p>
-                    </section>
-
-                    <section id="norma-editorial" class="section-block">
-                        <h2><i class="fas fa-edit"></i> Norma Editorial</h2>
-                        <ul>
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span>Todo documento debe ser inédito y se someterá a revisión por el Comité Editorial.</span>
-                            </li>
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span>La recepción de textos será a través de correo electrónico: <strong>fvega@comunidad.unam.mx</strong>.</span>
-                            </li>
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span>Se aceptan textos en español, inglés, francés y portugués.</span>
-                            </li>
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span>
-                                    En caso de aceptación de alguna contribución, se expedirá una carta de aceptación y el autor(es)
-                                    ceden de manera voluntaria los derechos patrimoniales del trabajo.
-                                </span>
-                            </li>
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span>
-                                    El texto deberá emplear una fuente Times New Roman número 12, a doble espacio y justificado.
-                                    Se sugiere emplear el citado tipo APA séptima edición
-                                    (revisar
-                                    <a href="https://normas-apa.org/wp-content/uploads/Guia-Normas-APA-7ma-edicion.pdf" target="_blank" rel="noopener noreferrer">
-                                        Guía Normas APA 7ma edición
-                                    </a>).
-                                    La extensión del texto deberá contemplar de 1500 a 1800 palabras, enumerando todas las páginas y
-                                    colocando en negritas los títulos y subtítulos.
-                                </span>
-                            </li>
-                            <li>
-                                <span class="check-icon">✓</span>
-                                <span>Cualquier duda o comentario, extenderla al Director de la revista.</span>
-                            </li>
-                        </ul>
-                    </section>
-
-                    <div class="bottom-image-wrapper">
-                        <img src="nosotros.png" alt="Cuadernos de Economía Aplicada y Ciencias Sociales - Aula">
-                    </div>
-
-                </div>
             </div>
         </div>
     </main>
@@ -1085,14 +1040,14 @@
                     54714 Cuautitlán Izcalli, Edo. de Méx.
                 </p>
                 <p>
-                    <i class="fas fa-envelope color-accent"></i> Correo electrónico:
+                    <i class="fas fa-envelope color-accent"></i> Correo electrónico: 
                     <a href="mailto:fvega@comunidad.unam.mx">fvega@comunidad.unam.mx</a>
                 </p>
                 <p>
                     <strong>Propietario:</strong> Facultad de Estudios Superiores Cuautitlán, por medio del Programa Interno de Cátedras de Investigación 2024 CI2425
                 </p>
                 <p>
-                    <i class="fas fa-certificate color-accent"></i> Licencia Creative Commons. Esta obra está bajo una
+                    <i class="fas fa-certificate color-accent"></i> Licencia Creative Commons. Esta obra está bajo una 
                     <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
                         Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional
                     </a>.
@@ -1113,7 +1068,7 @@
                     e.preventDefault();
                     const target = document.querySelector(targetId);
                     if (target) {
-                        target.scrollIntoView({
+                        target.scrollIntoView({ 
                             behavior: 'smooth',
                             block: 'start'
                         });
@@ -1126,7 +1081,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const currentPage = window.location.pathname.split('/').pop();
             const navLinks = document.querySelectorAll('nav a');
-
+            
             navLinks.forEach(link => {
                 const linkPage = link.getAttribute('href');
                 if (linkPage === currentPage) {
@@ -1164,7 +1119,7 @@
             heroCard.style.opacity = '0';
             heroCard.style.transform = 'translateY(20px)';
             heroCard.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-
+            
             const heroObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1173,27 +1128,8 @@
                     }
                 });
             }, observerOptions);
-
+            
             heroObserver.observe(heroCard);
-        }
-
-        // Efecto para la tarjeta de imagen
-        const heroImageCard = document.querySelector('.hero-image-card');
-        if (heroImageCard) {
-            heroImageCard.style.opacity = '0';
-            heroImageCard.style.transform = 'translateY(20px)';
-            heroImageCard.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-
-            const heroImageCardObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-
-            heroImageCardObserver.observe(heroImageCard);
         }
 
         // Efecto para la imagen principal con contenedor
@@ -1202,7 +1138,7 @@
             heroImageContainer.style.opacity = '0';
             heroImageContainer.style.transform = 'translateY(30px) scale(0.98)';
             heroImageContainer.style.transition = 'opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s';
-
+            
             const imgObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1211,7 +1147,7 @@
                     }
                 });
             }, observerOptions);
-
+            
             imgObserver.observe(heroImageContainer);
         }
 
@@ -1221,7 +1157,7 @@
             heroTitle.style.opacity = '0';
             heroTitle.style.transform = 'translateY(20px)';
             heroTitle.style.transition = 'opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s';
-
+            
             const titleObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1230,7 +1166,7 @@
                     }
                 });
             }, observerOptions);
-
+            
             titleObserver.observe(heroTitle);
         }
 
@@ -1240,7 +1176,7 @@
             bottomImage.style.opacity = '0';
             bottomImage.style.transform = 'translateY(30px) scale(0.98)';
             bottomImage.style.transition = 'opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s';
-
+            
             const bottomImgObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1249,7 +1185,7 @@
                     }
                 });
             }, observerOptions);
-
+            
             bottomImgObserver.observe(bottomImage);
         }
     </script>
